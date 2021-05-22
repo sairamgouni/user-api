@@ -1,0 +1,87 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Coaching",
+        "description": "Coaching System Application API details"
+    },
+    "host": "localhost:5000",
+    "basePath": "/api",
+    "tags": [
+        {
+            "name": "User",
+            "description": "API for fetching User informations"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    },
+    "paths": {
+        "/User": {
+            "get": {
+                "tags": [
+                    "FAQ"
+                ],
+                "description": "Retrieve FAQ information",
+                "parameters": [
+                    {
+                        "name": "userId",
+                        "in": "query",
+                        "description": "userId Id of the user",
+                        "schema": {
+                            "required": [
+                                "userId"
+                            ],
+                            "properties": {
+                                "userId": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Details  based on userId",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "role": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error."
+                    }
+                }
+            }
+        }
+    }
+}
